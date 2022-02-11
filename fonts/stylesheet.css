@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('NotoSans.woff2') format('woff2'),
+        url('NotoSans.woff') format('woff'),
+        url('NotoSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Dancing Script';
+    src: url('DancingScript-Regular.woff2') format('woff2'),
+        url('DancingScript-Regular.woff') format('woff'),
+        url('DancingScript-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('NotoSans_1.woff2') format('woff2'),
+        url('NotoSans_1.woff') format('woff'),
+        url('NotoSans_1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('Rubik-Regular.woff2') format('woff2'),
+        url('Rubik-Regular.woff') format('woff'),
+        url('Rubik-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('Rubik-Medium.woff2') format('woff2'),
+        url('Rubik-Medium.woff') format('woff'),
+        url('Rubik-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

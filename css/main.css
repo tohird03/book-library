@@ -1,0 +1,283 @@
+/* FONTS */
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('../fonts/NotoSans.woff2') format('woff2'),
+        url('../fonts/NotoSans.woff') format('woff'),
+        url('../fonts/NotoSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Dancing Script';
+    src: url('../fonts/DancingScript-Regular.woff2') format('woff2'),
+        url('../fonts/DancingScript-Regular.woff') format('woff'),
+        url('../fonts/DancingScript-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('../fonts/NotoSans_1.woff2') format('woff2'),
+        url('../fonts/NotoSans_1.woff') format('woff'),
+        url('../fonts/NotoSans_1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-Regular.woff2') format('woff2'),
+        url('../fonts/Rubik-Regular.woff') format('woff'),
+        url('../fonts/Rubik-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-Medium.woff2') format('woff2'),
+        url('../fonts/Rubik-Medium.woff') format('woff'),
+        url('../fonts/Rubik-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* GENERAL */
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+ *,
+ *::before,
+ *::after {
+  box-sizing: inherit;
+}
+
+ body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+ img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.container-fluid {
+    padding: 0px 40px 0px 25px;
+    /* max-width: 1259px; */
+}
+
+/* STYLE */
+.site-header {
+    padding: 14px 0px 12px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+
+.site-header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site__logo {
+    display: flex;
+    align-items: center;
+}
+
+.site__logo-img {
+    margin-right: 16px;
+}
+
+.site__logo-heading {
+    font-family: 'Dancing Script';
+    font-size: 36px;
+    line-height: 43px;
+}
+
+.site__search-input {
+    background: #f2f3f5;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    border: none;
+    padding: 15px 16px;
+
+    font-family: 'Rubik';
+    font-size: 13px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.64);
+    width: 670px;
+    margin-left: 150px;
+}
+
+.site__search-input:focus {
+    outline: none;
+}
+
+.site__logout {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.site-dark__btn {
+    margin-right: 15px;
+}
+
+.site-logout__btn {
+    padding: 10px 23px;
+    border-radius: 4px;
+}
+
+/* SITE HERO */
+.books {
+    background-color: #F8FAFD;
+}
+
+.site__hero {
+    padding: 11px 0px;
+    background-color: white;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+
+.book__order {
+    background: #A6B0C3;
+    border-radius: 4px;
+    color: white;
+}
+
+.book__result {
+    font-family: 'Rubik';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #222531;
+}
+
+/* Site left bookmark */
+.bookmark {
+    padding: 25px 45px 25px 25px;
+    background-color: white;
+}
+
+.bookmark__title {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 5px;
+}
+
+.bookmark__desc {
+    font-size: 13px;
+    line-height: 18px;
+    color: #757881;
+}
+
+.bookmark__heading {
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.bookmark__paragraph {
+    font-size: 14px;
+    line-height: 155.6%;
+    width: 218px;
+    margin-bottom: 25px;
+}
+
+.bookmark__item {
+    margin-bottom: 15px;
+    background: #F8FAFD;
+    border-radius: 4px;
+    padding: 20px 10px;
+}
+
+/* BOOK CARDS */
+.books {
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+
+.book__cards{
+    padding: 40px 10px 40px 40px;
+}
+
+.card {
+    width: 21rem;
+    padding: 13px 15px;
+    margin-bottom: 33px;
+}
+
+.card__imgs {
+    background-color: #F8FAFD;
+    padding: 18px 28px 18px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card__img {
+    height: 202px;
+    margin: 0 auto;
+}
+
+.card-title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    margin: 0;
+    margin-bottom: 2px;
+}
+
+.card-desc, .card-year {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #757881;
+    margin: 0;
+}
+
+.card-year {
+    margin-bottom: 20px;
+}
+
+.bookmark-add__btn {
+    background: #FFD80D;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 10px 0;
+}
+
+.bookmark-more__btn {
+    background: rgba(13, 117, 255, 0.05);
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #0D75FF;
+    padding: 10px 0;
+}
+
+.book-read__btn {
+    background: #75828A;
+    border-radius: 4px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    padding: 10px 0;
+}
