@@ -99,6 +99,10 @@ html {
     align-items: center;
 }
 
+.site__link {
+    text-decoration: none;
+}
+
 .site__logo-img {
     margin-right: 16px;
 }
@@ -289,4 +293,10 @@ html {
 
 img {
     object-fit: cover;
+}
+
+/* Pagination */
+.pagination {
+    max-width: 400px;
+    overflow: auto;
 }

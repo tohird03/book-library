@@ -16,8 +16,10 @@
         <div class="container-fluid site-header__container">
             <!-- SITE LOGO IMG -->
             <div class="site__logo">
-                <img class="site__logo-img" src="./img/logo.png" alt="Library site logo" width="54" height="44">
-                <h1 class="site__logo-heading m-0">BookShelter</h1>
+                <a href="#" class="d-flex site__link">
+                    <img class="site__logo-img" src="./img/logo.png" alt="Library site logo" width="54" height="44">
+                    <h1 class="site__logo-heading m-0">BookShelter</h1>
+                </a>
             </div>
 
             <!-- SITE SEARCH -->
@@ -65,7 +67,7 @@
                         <p class="bookmark__paragraph">If you don’t like to read, you haven’t found the right book</p>
 
                         <ul class="bookmark__list list-unstyled m-0 p-0">
-                            
+
                         </ul>
                     </div>
 
@@ -73,6 +75,11 @@
                     <div class="col-9 book__cards d-flex flex-wrap justify-content-between">
 
                     </div>
+
+
+                    <div class="pagination mx-auto col-12">
+                    </div>
+
                 </div>
             </div>
 
@@ -97,7 +104,7 @@
             <div class="card" style="width: 300px;padding: 13px 15px;">
 
                 <div class="card__imgs">
-                    <img class="card__img"  alt="..." width="201" height="202">
+                    <img class="card__img" alt="..." width="201" height="202">
                 </div>
 
                 <div class="card-body p-0">
@@ -107,15 +114,8 @@
 
                     <div class="d-flex bd-highlight mb-2">
                         <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                        <button class="btn bookmark-more__btn flex-grow-1 ms-1">More Info</button>
-                    </div>
-
-                    <div>
-
-                        <button class="btn text-white book-read__btn" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                            Read
-                        </button>
+                        <button class="btn bookmark-more__btn flex-grow-1 ms-1" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">More Info</button>
 
                         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
                             aria-labelledby="offcanvasExampleLabel">
@@ -142,6 +142,12 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div>
+                        <a class="btn text-white book-read__btn" type="button">
+                            Read
+                        </a>
                     </div>
                 </div>
             </div>
