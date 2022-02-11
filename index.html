@@ -35,10 +35,10 @@
         </div>
     </header>
 
-    <main class="main">
+    <main class="main d-flex flex-column flex-grow-1">
 
         <!-- SITE HERO -->
-        <section class="site__hero sticky-top">
+        <section class="site__hero sticky-top" style="z-index: 1;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-3"></div>
@@ -65,235 +65,96 @@
                         <p class="bookmark__paragraph">If you don’t like to read, you haven’t found the right book</p>
 
                         <ul class="bookmark__list list-unstyled m-0 p-0">
-                            <li class="bookmark__item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h3 class="bookmark__title m-0">Python</h3>
-                                    <p class="bookmark__desc m-0">David M. Beazley</p>
-                                </div>
-
-                                <div>
-                                    <button class="btn me-2 p-0">
-                                        <img src="./img/book-open.png" alt="Book open" width="24" height="24">
-                                    </button>
-                                    <button class="btn p-0">
-                                        <img src="./img/delete.png" alt="Bookmark delete" width="24" height="24">
-                                    </button>
-                                </div>
-                            </li>
+                            
                         </ul>
                     </div>
 
                     <!-- BOOK CARDS -->
                     <div class="col-9 book__cards d-flex flex-wrap justify-content-between">
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
-                        <div class="card" style="width: 300px;padding: 13px 15px;">
-
-                            <div class="card__imgs">
-                                <img class="card__img" src="./img/Login.jpg" alt="..." width="201" height="202">
-                            </div>
-
-                            <div class="card-body p-0">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-desc">David M. Beazley</p>
-                                <p class="card-year">2009</p>
-
-                                <div class="d-flex bd-highlight mb-2">
-                                    <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
-                                    <button class="btn bookmark-more__btn flex-grow-1 ms-1">Bookmark</button>
-                                </div>
-
-                                <button class="btn book-read__btn">Read</button>
-                            </div>
-
-                        </div>
 
                     </div>
                 </div>
             </div>
+
+            <div class="error" id="liveToastBtn">
+                <div class="position-fixed top-0 end-0 p-4" style="z-index: 110">
+                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header p-3">
+                            <strong class="me-auto">Xato!</strong>
+                            <button type="button" class="btn-close btn-light text-light" data-bs-dismiss="toast"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body p-3">
+                            Kechirasiz bizda bunday kitob topilmadi!!!
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <!-- BOOKMARKS CARD TEMPLATE -->
+        <template class="template">
+            <div class="card" style="width: 300px;padding: 13px 15px;">
+
+                <div class="card__imgs">
+                    <img class="card__img"  alt="..." width="201" height="202">
+                </div>
+
+                <div class="card-body p-0">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-desc">David M. Beazley</p>
+                    <p class="card-year">2009</p>
+
+                    <div class="d-flex bd-highlight mb-2">
+                        <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
+                        <button class="btn bookmark-more__btn flex-grow-1 ms-1">More Info</button>
+                    </div>
+
+                    <div>
+
+                        <button class="btn text-white book-read__btn" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                            Read
+                        </button>
+
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
+                            aria-labelledby="offcanvasExampleLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <div>
+                                    Some text as placeholder. In real life you can have the elements you have chosen.
+                                    Like, text, images, lists, etc.
+                                </div>
+                                <div class="dropdown mt-3">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                        Dropdown button
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
     </main>
 
     <script src="./bootstrap/bootstrap.bundle.min.js"></script>
     <script src="./js/script.js"></script>
+
+    <script>
+
+    </script>
 </body>
 
 </html>
