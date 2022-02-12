@@ -32,12 +32,6 @@ let order = "relevance"
 let allBooks = []
 const bookmarks = localTodos || []
 
-
-elModalBgOverlay.addEventListener("click", function(e){
-    elModalBgOverlay.classList.remove("opacity")
-    elModal.classList.remove("block")
-})
-
 // RENDER BOOKMARK CARDS
 let renderBokkmark = function(arr, element){
     arr.forEach(item => {
@@ -138,7 +132,6 @@ async function getData() {
     })
     .then((data) => {
         allBooks = data
-        console.log(`Data got`, allBooks)
     })
 }
 
@@ -227,8 +220,6 @@ elBodyBookCards.addEventListener("click", function(e) {
 
             p.setAttribute("class", "modal__abouts flex-wrap")
 
-            console.log(foundElement.volumeInfo.authors);
-
             p.textContent = foundElement.volumeInfo.authors[index]
 
             elModalAuthor.appendChild(p)
@@ -242,6 +233,12 @@ elBodyBookCards.addEventListener("click", function(e) {
 
         elModalImg.setAttribute("src", foundElement.volumeInfo.imageLinks.thumbnail)
     }
+})
+
+// MODAL
+elModalBgOverlay.addEventListener("click", function(e){
+    elModalBgOverlay.classList.remove("opacity")
+    elModal.classList.remove("block")
 })
 
 // TOTAL AND PAGINATION
