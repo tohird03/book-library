@@ -507,3 +507,8 @@ html {
     box-shadow: #eee4e4;
     border: 2px solid white;
 }
+
+.error {
+    position: relative;
+    z-index: 1000;
+}
