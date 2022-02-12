@@ -308,19 +308,20 @@ html {
     padding: 5px 15px;
     border-radius: 5px;
     border: none;
-    background-color: #9e7f6c;
+    background-color: #ffffff;
     margin-left: 5px;
+    border: 2px solid black;
 }
 
 .pagination__btn:active {
-    background-color: #FFD80D;
+    background-color: #858585;
 }
 
 .btn-pagination {
     padding: 5px 15px;
     border: none;
-    background-color: #ffd900;
-    color: rgb(0, 0, 0);
+    background-color: #5f5f5e;
+    color: rgb(255, 255, 255);
     border-radius: 10px;
 }
 

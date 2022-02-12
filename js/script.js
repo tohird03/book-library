@@ -27,7 +27,7 @@ const localTodos = JSON.parse(window.localStorage.getItem('movie'))
 
 let request = "uzbek"
 const bookmarks = localTodos || []
-let page = 0;
+let page = 10;
 let order = "relevance"
 
 
@@ -156,7 +156,7 @@ let render = function(req) {
         })
 
         // PAGENATION DISABLED
-        if(page === 0) {
+        if(page === 10) {
             elPrevPaginationBtn.disabled = true
             elPrevPaginationBtn.classList.add("disabled")
 
@@ -238,7 +238,7 @@ let totalItems = function(e) {
     elTotalBooksSearch.textContent = e.totalItems
 
     let totalResultPage = Math.ceil(elTotalBooksSearch.textContent / 10)
-    for (let index = 0; index <= totalResultPage; index++) {
+    for (let index = 1; index <= totalResultPage; index++) {
 
         let btnPage = document.createElement("button")
 
