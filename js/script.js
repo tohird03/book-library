@@ -3,12 +3,30 @@ let elTotalBooksSearch = document.querySelector(".book__results")
 let elBodyBookCards = document.querySelector(".book__cards")
 let elBookmarksList = document.querySelector(".bookmark__list")
 let elPagination = document.querySelector(".pagination")
-let elOrder = document.querySelector(".book__order")
+let elOrderSort = document.querySelector(".book__order")
 const elCardTemplate = document.querySelector(".template").content;
+let elPrevPaginationBtn = document.querySelector(".prev__btn")
+let elNextPaginationBtn = document.querySelector(".next__btn")
 
-let request = "Uzbek"
+let elModal = document.querySelector(".modal")
+let elModalBgOverlay = document.querySelector(".bg__modal")
+let elModalTitle = document.querySelector(".modal__title")
+let elModalImg = document.querySelector(".modal__img")
+let elModalDesc = document.querySelector(".modal__desc")
+let elModalAuthor = document.querySelector(".modal__author")
+let elModalPublished = document.querySelector(".modal__published")
+let elModalPublishers = document.querySelector(".modal__publishers")
+let elModalCategories = document.querySelector(".modal__categories")
+let elModalPage = document.querySelector(".modal__page")
+
+elModalBgOverlay.addEventListener("click", function(e){
+    elModalBgOverlay.classList.remove("opacity")
+    elModal.classList.remove("block")
+})
+
+let request = "html"
 let bookmarks = []
-let page = 1;
+let page = 0;
 let order = "relevance"
 
 let renderBokkmark = function(arr, element){
@@ -39,10 +57,10 @@ let renderBokkmark = function(arr, element){
 
 
         bookmarkLiTitle.textContent = item.volumeInfo.title
-        // bookmarkLiDesc.textContent = item.volumeInfo.authors
+        bookmarkLiDesc.textContent = item.volumeInfo.authors
 
-        // bookmarkLiBtnDelete.dataset.removeBookmarkId = item.id
-        // bookmarkLiBtnDeleteImg.dataset.removeBookmarkIdImg = item.id
+        bookmarkLiBtnDelete.dataset.removeBookmarkId = item.id
+        bookmarkLiBtnDeleteImg.dataset.removeBookmarkIdImg = item.id
 
         element.appendChild(bookmarkLi)
         bookmarkLi.appendChild(bookmarkLiDivTitle)
@@ -56,8 +74,7 @@ let renderBokkmark = function(arr, element){
     })
 }
 
-
-
+renderBokkmark(bookmarks, elBookmarksList)
 const renderBook = function (arr, element) {
     if(arr){
 
@@ -74,13 +91,15 @@ const renderBook = function (arr, element) {
 
           clonedFilmTemplate.querySelector(".bookmark-add__btn").dataset.AddBtnId = item.id;
 
+          clonedFilmTemplate.querySelector(".bookmark-more__btn").dataset.moreBtnId = item.id;
+
           clonedFilmTemplate.querySelector(".book-read__btn").href = item.volumeInfo.previewLink;
 
           clonedFilmTemplate.querySelector(".book-read__btn").target = "_blank";
 
           clonedFilmTemplate.querySelector(".card__img").src = item.volumeInfo.imageLinks?.thumbnail;
 
-            console.log(item.volumeInfo.imageLinks?.smallThumbnail);
+            // console.log(item.volumeInfo.imageLinks?.smallThumbnail);
           filmsFragment.appendChild(clonedFilmTemplate);
         });
 
@@ -95,6 +114,8 @@ elInput.addEventListener("keyup", function(evt) {
         request = elInput.value;
         render();
     }
+
+
         // render();
 })
 
@@ -104,24 +125,17 @@ let render = function(req) {
       return response.json();
     })
     .then((data) => {
-        console.log(data.items);
+        // console.log(data.items);
 
         renderBook(data.items, elBodyBookCards);
         totalItems(data)
-        validationTotalItems(data)
-
         elBodyBookCards.addEventListener("click", function(e) {
-
             if(e.target.matches('.bookmark-add__btn')) {
+                elBookmarksList.innerHTML = null
+
                 const addBookmarkBtnId = e.target.dataset.AddBtnId
 
-                elBookmarksList.innerHTML = null
-                console.log("HAaa");
-                // console.log(addBookmarkBtnId);
-
                 const foundElement = data.items.find(item => item.id == addBookmarkBtnId)
-
-                // console.log(foundElement.volumeInfo);
 
                 if(!bookmarks.includes(foundElement)) {
                     bookmarks.push(foundElement)
@@ -134,22 +148,70 @@ let render = function(req) {
             // renderBook()
         })
 
-        elBookmarksList.addEventListener('click', function(evt) {
+        elBodyBookCards.addEventListener("click", function(e) {
+            if(e.target.matches('.bookmark-more__btn')) {
+                    // console.log(e.target);
 
+                    elModalBgOverlay.classList.add("opacity")
+                    const addBookmarkBtnId = e.target.dataset.moreBtnId
+
+                    elBookmarksList.innerHTML = null
+
+                    const foundElement = data.items.find(item => item.id == addBookmarkBtnId)
+
+                    elModal.classList.remove("none")
+                    elModal.classList.add("block")
+                    elModalTitle.textContent = foundElement.volumeInfo.title
+                    elModalDesc.textContent = foundElement.volumeInfo.description
+
+                    elModalAuthor.innerHTML = null
+                    
+                    for (let index = 0; index < foundElement.volumeInfo.authors.length; index++) {
+                        let p = document.createElement("p")
+
+                        p.setAttribute("class", "modal__abouts flex-wrap")
+
+                        console.log(foundElement.volumeInfo.authors);
+
+                        p.textContent = foundElement.volumeInfo.authors[index]
+
+                        elModalAuthor.appendChild(p)
+                    }
+
+                    elModalPublished.textContent = foundElement.volumeInfo.publishedDate
+                    elModalPublishers.textContent = foundElement.volumeInfo.publisher
+                    elModalCategories.textContent = foundElement.volumeInfo.categories
+                    elModalPage.textContent = foundElement.volumeInfo.pageCount
+                    elModalImg.setAttribute("src", foundElement.volumeInfo.imageLinks.thumbnail)
+
+                    console.log(foundElement);
+                    // if(!bookmarks.includes(foundElement)) {
+                    //     bookmarks.push(foundElement)
+                    // }
+            }
+        })
+
+        elBookmarksList.addEventListener('click', function(evt) {
             if(evt.target.matches('.remove__btn')) {
                 const removeBtnId = evt.target.dataset.removeBookmarkId
                 const foundIndex = bookmarks.findIndex(item => item.id == removeBtnId)
                 bookmarks.splice(foundIndex, 1)
+                console.log(evt.target);
             }else if(evt.target.matches('.delete__img')){
                 const removeBtnIdImg = evt.target.dataset.removeBookmarkIdImg
                 const foundIndex = bookmarks.findIndex(item => item.id == removeBtnIdImg)
                 bookmarks.splice(foundIndex, 1)
+                console.log(foundIndex);
             }
 
             elBookmarksList.innerHTML = null
             renderBokkmark(bookmarks, elBookmarksList)
-            // renderBook()
         })
+
+        elTotalBooksSearch.textContent = data.totalItems
+        // console.log(elTotalBooksSearch.textContent);
+        validationTotalItems(data.totalItems)
+
     })
 }
 
@@ -163,14 +225,18 @@ let totalItems = function(e) {
     for (let index = 1; index <= totalResultPage; index++) {
 
         let btnPage = document.createElement("button")
+
         btnPage.textContent = index
+
+        btnPage.setAttribute("class", "pagination__btn")
+
         elPagination.appendChild(btnPage)
-        console.log(index);
+        // console.log(index);
     }
 }
 
 elPagination.addEventListener("click", function(e) {
-    console.log(e.target);
+    // console.log(e.target);
     elBodyBookCards.innerHTML = null
     elPagination.innerHTML = null
     e.target.setAttribute("class", "btn-primary")
@@ -181,7 +247,7 @@ elPagination.addEventListener("click", function(e) {
 
 // SEARCH ERROR
 let validationTotalItems = function(e) {
-    if(e.totalItems === 0) {
+    if(e === 0) {
         var toastLiveExample = document.getElementById('liveToast')
 
         var toast = new bootstrap.Toast(toastLiveExample)
@@ -191,10 +257,70 @@ let validationTotalItems = function(e) {
 }
 
 // ORDER
-elOrder.addEventListener("click", function(e) {
+elOrderSort.addEventListener("click", function(e) {
     elBodyBookCards.innerHTML = null
     elPagination.innerHTML = null
 
    order = "newest"
    render();
 })
+
+// elPrevPaginationBtn.disabled = true
+
+
+elPrevPaginationBtn.addEventListener("click", function(e) {
+    elBodyBookCards.innerHTML = null
+    page = page - 10
+    render()
+    console.log(page);
+    if (page === 0) {
+        console.log(page);
+        elPrevPaginationBtn.disabled = true
+        elPrevPaginationBtn.classList.add("class", "btn-primary disabled")
+        // elPrevPaginationBtn.setAttribute("class", "btn-primary")
+        // elNextPaginationBtn.disabled = false;
+      } else if(page > 10) {
+        elPrevPaginationBtn.disabled = false
+        // elPrevPaginationBtn.classList.remove("class", "btn-primary disabled")
+        // elNextPaginationBtn.disabled = false;
+      }
+})
+
+elNextPaginationBtn.addEventListener("click", function(e) {
+    elBodyBookCards.innerHTML = null
+    page = page + 10
+    console.log(page);
+    render()
+
+    if (page === 0) {
+        console.log(page);
+        elPrevPaginationBtn.classList.add("class", "btn-primary disabled")
+        // elPrevPaginationBtn.setAttribute("class", "btn-primary")
+        // elNextPaginationBtn.disabled = false;
+      } else if(page >= 10) {
+        // elPrevPaginationBtn.classList.remove("class", "btn-primary disabled")
+        // elNextPaginationBtn.disabled = false;
+        elPrevPaginationBtn.disabled = false
+      }
+
+    //   const lastItemCount = Math.floor(Number(elTotalBooksSearch.textContent) / 10) + 1;
+    // //   console.log(lastItemCount);
+
+    //   if (page === lastItemCount) {
+    //       elNextPaginationBtn.disabled = false;
+    // } else {
+    //     elPrevPaginationBtn.disabled = true;
+    //   }
+})
+
+if (page === 0) {
+    console.log(page);
+    elPrevPaginationBtn.disabled = true
+    elPrevPaginationBtn.classList.add("class", "btn-primary disabled")
+    // elPrevPaginationBtn.setAttribute("class", "btn-primary")
+    // elNextPaginationBtn.disabled = false;
+  } else if(page > 10) {
+    elPrevPaginationBtn.disabled = false
+    // elPrevPaginationBtn.classList.remove("class", "btn-primary disabled")
+    // elNextPaginationBtn.disabled = false;
+  }

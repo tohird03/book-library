@@ -47,7 +47,7 @@
 
                     <div class="col-9 d-flex align-items-center justify-content-between">
                         <p class="book__result m-0">
-                            Showing <span class="book__results">0</span> Result(s)
+                            Showing <span class="book__results"></span> Result(s)
                         </p>
                         <button class="btn book__order text-light">📅 Order by newest</button>
                     </div>
@@ -72,13 +72,22 @@
                     </div>
 
                     <!-- BOOK CARDS -->
-                    <div class="col-9 book__cards d-flex flex-wrap justify-content-between">
+                    <div class="col-9 d-flex flex-column flex-wrap justify-content-between">
+                        <div class="book__cards d-flex flex-wrap justify-content-between">
 
+                        </div>
+                        <div class="paginations mx-auto mb-5 d-flex">
+                            <button class="btn-pagination prev__btn fs-4">
+                                &#9111; Prev</button>
+                            <div class="pagination">
+
+                            </div>
+                            <button class="btn-pagination next__btn fs-4">Next
+                                &#9112;</button>
+                        </div>
                     </div>
 
 
-                    <div class="pagination mx-auto col-12">
-                    </div>
 
                 </div>
             </div>
@@ -116,32 +125,7 @@
                         <button class="btn bookmark-add__btn flex-grow-1 me-1">Bookmark</button>
                         <button class="btn bookmark-more__btn flex-grow-1 ms-1" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">More Info</button>
-
-                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
-                            aria-labelledby="offcanvasExampleLabel">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body">
-                                <div>
-                                    Some text as placeholder. In real life you can have the elements you have chosen.
-                                    Like, text, images, lists, etc.
-                                </div>
-                                <div class="dropdown mt-3">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-bs-toggle="dropdown">
-                                        Dropdown button
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="modal__body"></div>
                     </div>
 
                     <div>
@@ -152,6 +136,50 @@
                 </div>
             </div>
         </template>
+
+        <div class="bg__modal position-fixed"></div>
+        <div class="modal none sticky-top position-fixed">
+            <div>
+                <div class="modal__title"></div>
+
+            </div>
+
+            <div class="modal-book__about mb-4">
+                <div class="mx-auto text-center">
+                    <img class="modal__img" src="" width="230" height="300"></img>
+                </div>
+                <div class="modal__desc"></div>
+                <div class="d-flex mb-1 align-items-center">
+                    <h4 class="modal-body__elements">Author:</h4>
+                    <div class="modal__author d-flex"></div>
+                </div>
+                <div class="d-flex mb-1 align-items-center">
+                    <h4 class="modal-body__elements">Published: </h4>
+                    <p class="modal__published modal__abouts"></p>
+                </div>
+                <div class="d-flex mb-1 align-items-center">
+                    <h4 class="modal-body__elements">Publishers:</h4>
+                    <p class="modal__publishers modal__abouts"></p>
+                </div>
+                <div class="d-flex mb-1 align-items-center">
+                    <h4 class="modal-body__elements">Categories:</h4>
+                    <p class="modal__categories modal__abouts"></p>
+                </div>
+                <div class="d-flex mb-1 align-items-center">
+                    <h4 class="modal-body__elements">Pages Count:</h4>
+                    <p class="modal__page modal__abouts"></p>
+                </div>
+                <div class="d-flex flex-grow-1"></div>
+                <div class="d-flex">
+                    <button class="btn modal__read">Read</button>
+                </div>
+            </div>
+
+            <!-- <div class="modal__published"></div>
+            <div class="modal__publishers"></div>
+            <div class="modal__categories"></div>
+            <div class="modal__page"></div> -->
+        </div>
 
     </main>
 
