@@ -114,9 +114,6 @@ elInput.addEventListener("keyup", function(evt) {
         request = elInput.value;
         render();
     }
-
-
-        // render();
 })
 
 let render = function(req) {
@@ -165,7 +162,7 @@ let render = function(req) {
                     elModalDesc.textContent = foundElement.volumeInfo.description
 
                     elModalAuthor.innerHTML = null
-                    
+
                     for (let index = 0; index < foundElement.volumeInfo.authors.length; index++) {
                         let p = document.createElement("p")
 
