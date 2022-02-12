@@ -131,11 +131,6 @@ let render = function(req) {
       return response.json();
     })
     .then((data) => {
-
-        renderBook(data.items, elBodyBookCards);
-        totalItems(data)
-        elTotalBooksSearch.textContent = data.totalItems
-        validationTotalItems(data.totalItems)
         // BOOKMARKS ADD
         elBodyBookCards.addEventListener("click", function(e) {
             if(e.target.matches('.bookmark-add__btn')) {
@@ -238,7 +233,7 @@ let totalItems = function(e) {
     elTotalBooksSearch.textContent = e.totalItems
 
     let totalResultPage = Math.ceil(elTotalBooksSearch.textContent / 10)
-    for (let index = 1; index <= totalResultPage; index++) {
+    for (let index = 0; index <= totalResultPage; index++) {
 
         let btnPage = document.createElement("button")
 
@@ -247,7 +242,7 @@ let totalItems = function(e) {
         btnPage.setAttribute("class", "pagination__btn")
 
         elPagination.appendChild(btnPage)
-        // console.log(index);
+        console.log(index);
     }
 }
 
@@ -255,11 +250,8 @@ elPagination.addEventListener("click", function(e) {
     if(e.target.matches(".pagination__btn")){
         elBodyBookCards.innerHTML = null
         elPagination.innerHTML = null
-        // elModal.innerHTML = null
         e.target.setAttribute("class", "btn-primary")
         page = Number(e.target.textContent * 10)
-
-       console.log(page);
        render()
     }
 })
