@@ -75,6 +75,7 @@ html {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+  object-fit: cover;
 }
 
 .container-fluid {
@@ -291,12 +292,70 @@ html {
     color: rgb(255, 255, 0);
 }
 
-img {
-    object-fit: cover;
-}
-
 /* Pagination */
 .pagination {
     max-width: 400px;
     overflow: auto;
+}
+
+/* LOGIN */
+.login__body {
+    background-image: url("../img/Login.jpg");
+}
+
+.login {
+    max-width: 400px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login__header {
+    margin-bottom: 50px;
+}
+
+.login__input {
+    width: 300px;
+    height: 45px;
+    background: none;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.login__input:nth-child(2) {
+    margin-bottom: 43px;
+}
+
+.login__input:focus {
+    outline: none;
+}
+
+.login__btn {
+    width: 300px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    color: #0D75FF;
+    padding: 13px 0;
+}
+
+.login__links {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.login__link {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
 }
