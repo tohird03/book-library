@@ -75,6 +75,7 @@ let renderBokkmark = function(arr, element){
 }
 
 renderBokkmark(bookmarks, elBookmarksList)
+
 const renderBook = function (arr, element) {
     if(arr){
 
@@ -126,6 +127,7 @@ let render = function(req) {
 
         renderBook(data.items, elBodyBookCards);
         totalItems(data)
+
         elBodyBookCards.addEventListener("click", function(e) {
             if(e.target.matches('.bookmark-add__btn')) {
                 elBookmarksList.innerHTML = null
@@ -144,6 +146,19 @@ let render = function(req) {
             renderBokkmark(bookmarks, elBookmarksList)
             // renderBook()
         })
+
+        // let totalPage = Math.ceil(data.totalItems / 10) - 1
+
+        // console.log(totalPage);
+
+        if(page === 0) {
+            elPrevPaginationBtn.disabled = true
+            elPrevPaginationBtn.classList.add("disabled")
+
+        }else{
+            elPrevPaginationBtn.disabled = false
+            elPrevPaginationBtn.classList.remove("disabled")
+        }
 
         elBodyBookCards.addEventListener("click", function(e) {
             if(e.target.matches('.bookmark-more__btn')) {
@@ -206,7 +221,7 @@ let render = function(req) {
         })
 
         elTotalBooksSearch.textContent = data.totalItems
-        // console.log(elTotalBooksSearch.textContent);
+
         validationTotalItems(data.totalItems)
 
     })
@@ -233,18 +248,20 @@ let totalItems = function(e) {
 }
 
 elPagination.addEventListener("click", function(e) {
-    // console.log(e.target);
-    elBodyBookCards.innerHTML = null
-    elPagination.innerHTML = null
-    e.target.setAttribute("class", "btn-primary")
-    page = Number(e.target.textContent)
+    if(e.target.matches(".pagination__btn")){
+        elBodyBookCards.innerHTML = null
+        elPagination.innerHTML = null
+        e.target.setAttribute("class", "btn-primary")
+        page = Number(e.target.textContent * 10)
 
-    render()
+       console.log(page);
+       render()
+    }
 })
 
 // SEARCH ERROR
 let validationTotalItems = function(e) {
-    if(e === 0) {
+    if(e == 0) {
         var toastLiveExample = document.getElementById('liveToast')
 
         var toast = new bootstrap.Toast(toastLiveExample)
@@ -262,62 +279,19 @@ elOrderSort.addEventListener("click", function(e) {
    render();
 })
 
-// elPrevPaginationBtn.disabled = true
-
-
 elPrevPaginationBtn.addEventListener("click", function(e) {
     elBodyBookCards.innerHTML = null
+    elPagination.innerHTML = null
     page = page - 10
     render()
     console.log(page);
-    if (page === 0) {
-        console.log(page);
-        elPrevPaginationBtn.disabled = true
-        elPrevPaginationBtn.classList.add("class", "btn-primary disabled")
-        // elPrevPaginationBtn.setAttribute("class", "btn-primary")
-        // elNextPaginationBtn.disabled = false;
-      } else if(page > 10) {
-        elPrevPaginationBtn.disabled = false
-        // elPrevPaginationBtn.classList.remove("class", "btn-primary disabled")
-        // elNextPaginationBtn.disabled = false;
-      }
+
 })
 
 elNextPaginationBtn.addEventListener("click", function(e) {
     elBodyBookCards.innerHTML = null
+    elPagination.innerHTML = null
     page = page + 10
     console.log(page);
     render()
-
-    if (page === 0) {
-        console.log(page);
-        elPrevPaginationBtn.classList.add("class", "btn-primary disabled")
-        // elPrevPaginationBtn.setAttribute("class", "btn-primary")
-        // elNextPaginationBtn.disabled = false;
-      } else if(page >= 10) {
-        // elPrevPaginationBtn.classList.remove("class", "btn-primary disabled")
-        // elNextPaginationBtn.disabled = false;
-        elPrevPaginationBtn.disabled = false
-      }
-
-    //   const lastItemCount = Math.floor(Number(elTotalBooksSearch.textContent) / 10) + 1;
-    // //   console.log(lastItemCount);
-
-    //   if (page === lastItemCount) {
-    //       elNextPaginationBtn.disabled = false;
-    // } else {
-    //     elPrevPaginationBtn.disabled = true;
-    //   }
 })
-
-if (page === 0) {
-    console.log(page);
-    elPrevPaginationBtn.disabled = true
-    elPrevPaginationBtn.classList.add("class", "btn-primary disabled")
-    // elPrevPaginationBtn.setAttribute("class", "btn-primary")
-    // elNextPaginationBtn.disabled = false;
-  } else if(page > 10) {
-    elPrevPaginationBtn.disabled = false
-    // elPrevPaginationBtn.classList.remove("class", "btn-primary disabled")
-    // elNextPaginationBtn.disabled = false;
-  }

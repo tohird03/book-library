@@ -228,6 +228,7 @@ html {
     width: 21rem;
     padding: 13px 15px;
     margin-bottom: 33px;
+    position: relative;
 }
 
 .card__imgs {
@@ -387,14 +388,9 @@ html {
 
 .disabled {
     opacity: 0.4;
-    color: red;
 }
 
 /* MODAL */
-/* .modal {
-    padding: 0px 30px;
-} */
-
 .modal__title {
     padding: 25px 30px;
     font-weight: 500;
