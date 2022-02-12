@@ -22,15 +22,19 @@ let elModalCategories = document.querySelector(".modal__categories")
 let elModalPageBookTotal = document.querySelector(".modal__page")
 let elModalPage = document.querySelector(".modal__read")
 
+
+const localTodos = JSON.parse(window.localStorage.getItem('movie'))
+
+let request = "uzbek"
+const bookmarks = localTodos || []
+let page = 0;
+let order = "relevance"
+
+
 elModalBgOverlay.addEventListener("click", function(e){
     elModalBgOverlay.classList.remove("opacity")
     elModal.classList.remove("block")
 })
-
-let request = "uzbek"
-let bookmarks = []
-let page = 0;
-let order = "relevance"
 
 // RENDER BOOKMARK CARDS
 let renderBokkmark = function(arr, element){
@@ -147,8 +151,8 @@ let render = function(req) {
                 return
             }
 
+            window.localStorage.setItem('movie', JSON.stringify(bookmarks))
             renderBokkmark(bookmarks, elBookmarksList)
-            // renderBook()
         })
 
         // PAGENATION DISABLED
@@ -215,6 +219,7 @@ let render = function(req) {
                 console.log(foundIndex);
             }
 
+            window.localStorage.setItem('movie', JSON.stringify(bookmarks))
             elBookmarksList.innerHTML = null
             renderBokkmark(bookmarks, elBookmarksList)
         })
