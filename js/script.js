@@ -123,6 +123,7 @@ const renderBook = function (arr, element) {
 elInput.addEventListener("keyup", function(evt) {
     if(evt.keyCode === 13){
         elBodyBookCards.innerHTML = null
+        elPagination.innerHTML = null
         evt.preventDefault()
         request = elInput.value;
         refresh();
@@ -159,13 +160,13 @@ function render() {
 
 }
 
+// GLOBAL FUNCTION
 async function refresh() {
     await getData()
     render()
 }
 
 refresh();
-
 
 // BOOKMARKS ADD
 elBodyBookCards.addEventListener("click", function(e) {
@@ -243,7 +244,7 @@ elBodyBookCards.addEventListener("click", function(e) {
     }
 })
 
-
+// TOTAL AND PAGINATION
 let totalItems = function(e) {
     elTotalBooksSearch.textContent = e.totalItems
 
@@ -265,6 +266,7 @@ let totalItems = function(e) {
     }
 }
 
+// PAGINATION BTN'S
 elPagination.addEventListener("click", function(e) {
     if (e.target.matches(".pagination__btn")){
         elBodyBookCards.innerHTML = null
