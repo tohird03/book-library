@@ -1,3 +1,4 @@
+// SITE HTML ELEMENTS
 let elInput = document.querySelector(".site__search-input")
 let elTotalBooksSearch = document.querySelector(".book__results")
 let elBodyBookCards = document.querySelector(".book__cards")
@@ -8,6 +9,7 @@ const elCardTemplate = document.querySelector(".template").content;
 let elPrevPaginationBtn = document.querySelector(".prev__btn")
 let elNextPaginationBtn = document.querySelector(".next__btn")
 
+// MODAL HTML ELEMENTS
 let elModal = document.querySelector(".modal")
 let elModalBgOverlay = document.querySelector(".bg__modal")
 let elModalTitle = document.querySelector(".modal__title")
@@ -17,18 +19,20 @@ let elModalAuthor = document.querySelector(".modal__author")
 let elModalPublished = document.querySelector(".modal__published")
 let elModalPublishers = document.querySelector(".modal__publishers")
 let elModalCategories = document.querySelector(".modal__categories")
-let elModalPage = document.querySelector(".modal__page")
+let elModalPageBookTotal = document.querySelector(".modal__page")
+let elModalPage = document.querySelector(".modal__read")
 
 elModalBgOverlay.addEventListener("click", function(e){
     elModalBgOverlay.classList.remove("opacity")
     elModal.classList.remove("block")
 })
 
-let request = "html"
+let request = "uzbek"
 let bookmarks = []
 let page = 0;
 let order = "relevance"
 
+// RENDER BOOKMARK CARDS
 let renderBokkmark = function(arr, element){
     arr.forEach(item => {
         let bookmarkLi = document.createElement('li')
@@ -36,7 +40,7 @@ let renderBokkmark = function(arr, element){
         let bookmarkLiTitle = document.createElement('h3')
         let bookmarkLiDesc = document.createElement('p')
         let bookmarkDivBtn = document.createElement('div')
-        let bookmarkLiBtnRead = document.createElement('button')
+        let bookmarkLiBtnRead = document.createElement('a')
         let bookmarkLiBtnReadImg = document.createElement('img')
         let bookmarkLiBtnDelete = document.createElement('button')
         let bookmarkLiBtnDeleteImg = document.createElement('img')
@@ -45,7 +49,7 @@ let renderBokkmark = function(arr, element){
         bookmarkLiTitle.setAttribute("class", "bookmark__title m-0")
         bookmarkLiDesc.setAttribute("class", "bookmark__desc m-0")
         bookmarkDivBtn.setAttribute("class", "d-flex w-100")
-        bookmarkLiBtnRead.setAttribute("class", "btn ms-auto me-2 p-0")
+        bookmarkLiBtnRead.setAttribute("class", "btn ms-auto me-2 p-0 bookmark__read-link")
         bookmarkLiBtnDelete.setAttribute("class", "btn p-0 remove__btn")
         bookmarkLiBtnReadImg.setAttribute("src", "./img/book-open.png")
         bookmarkLiBtnReadImg.setAttribute("width", "24")
@@ -62,6 +66,9 @@ let renderBokkmark = function(arr, element){
         bookmarkLiBtnDelete.dataset.removeBookmarkId = item.id
         bookmarkLiBtnDeleteImg.dataset.removeBookmarkIdImg = item.id
 
+        bookmarkLiBtnRead.setAttribute("href", item.volumeInfo.previewLink)
+        bookmarkLiBtnRead.setAttribute("target", "_blank")
+
         element.appendChild(bookmarkLi)
         bookmarkLi.appendChild(bookmarkLiDivTitle)
         bookmarkLiDivTitle.appendChild(bookmarkLiTitle)
@@ -76,6 +83,7 @@ let renderBokkmark = function(arr, element){
 
 renderBokkmark(bookmarks, elBookmarksList)
 
+// RENDER FUNCTION TEMPLATE CARDS
 const renderBook = function (arr, element) {
     if(arr){
 
@@ -100,7 +108,6 @@ const renderBook = function (arr, element) {
 
           clonedFilmTemplate.querySelector(".card__img").src = item.volumeInfo.imageLinks?.thumbnail;
 
-            // console.log(item.volumeInfo.imageLinks?.smallThumbnail);
           filmsFragment.appendChild(clonedFilmTemplate);
         });
 
@@ -108,6 +115,7 @@ const renderBook = function (arr, element) {
       }
 };
 
+// INPUT SEARCH
 elInput.addEventListener("keyup", function(evt) {
     if(evt.keyCode === 13){
         elBodyBookCards.innerHTML = null
@@ -123,11 +131,12 @@ let render = function(req) {
       return response.json();
     })
     .then((data) => {
-        // console.log(data.items);
 
         renderBook(data.items, elBodyBookCards);
         totalItems(data)
-
+        elTotalBooksSearch.textContent = data.totalItems
+        validationTotalItems(data.totalItems)
+        // BOOKMARKS ADD
         elBodyBookCards.addEventListener("click", function(e) {
             if(e.target.matches('.bookmark-add__btn')) {
                 elBookmarksList.innerHTML = null
@@ -147,10 +156,7 @@ let render = function(req) {
             // renderBook()
         })
 
-        // let totalPage = Math.ceil(data.totalItems / 10) - 1
-
-        // console.log(totalPage);
-
+        // PAGENATION DISABLED
         if(page === 0) {
             elPrevPaginationBtn.disabled = true
             elPrevPaginationBtn.classList.add("disabled")
@@ -160,10 +166,9 @@ let render = function(req) {
             elPrevPaginationBtn.classList.remove("disabled")
         }
 
+        // MODAL BODY
         elBodyBookCards.addEventListener("click", function(e) {
             if(e.target.matches('.bookmark-more__btn')) {
-                    // console.log(e.target);
-
                     elModalBgOverlay.classList.add("opacity")
                     const addBookmarkBtnId = e.target.dataset.moreBtnId
 
@@ -178,6 +183,7 @@ let render = function(req) {
 
                     elModalAuthor.innerHTML = null
 
+                    // AUTHORS
                     for (let index = 0; index < foundElement.volumeInfo.authors.length; index++) {
                         let p = document.createElement("p")
 
@@ -193,16 +199,14 @@ let render = function(req) {
                     elModalPublished.textContent = foundElement.volumeInfo.publishedDate
                     elModalPublishers.textContent = foundElement.volumeInfo.publisher
                     elModalCategories.textContent = foundElement.volumeInfo.categories
-                    elModalPage.textContent = foundElement.volumeInfo.pageCount
-                    elModalImg.setAttribute("src", foundElement.volumeInfo.imageLinks.thumbnail)
+                    elModalPageBookTotal.textContent = foundElement.volumeInfo.pageCount
+                    elModalPage.setAttribute("href", foundElement.volumeInfo.previewLink)
 
-                    console.log(foundElement);
-                    // if(!bookmarks.includes(foundElement)) {
-                    //     bookmarks.push(foundElement)
-                    // }
+                    elModalImg.setAttribute("src", foundElement.volumeInfo.imageLinks.thumbnail)
             }
         })
 
+        // BOOKMARK REMOVE
         elBookmarksList.addEventListener('click', function(evt) {
             if(evt.target.matches('.remove__btn')) {
                 const removeBtnId = evt.target.dataset.removeBookmarkId
@@ -220,10 +224,10 @@ let render = function(req) {
             renderBokkmark(bookmarks, elBookmarksList)
         })
 
+        renderBook(data.items, elBodyBookCards);
+        totalItems(data)
         elTotalBooksSearch.textContent = data.totalItems
-
         validationTotalItems(data.totalItems)
-
     })
 }
 
@@ -251,6 +255,7 @@ elPagination.addEventListener("click", function(e) {
     if(e.target.matches(".pagination__btn")){
         elBodyBookCards.innerHTML = null
         elPagination.innerHTML = null
+        // elModal.innerHTML = null
         e.target.setAttribute("class", "btn-primary")
         page = Number(e.target.textContent * 10)
 
